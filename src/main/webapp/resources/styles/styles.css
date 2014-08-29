@@ -1,0 +1,14 @@
+body > .ui-layout-unit {
+  border: 0;
+}
+body > .ui-layout-unit.ui-layout-pane-north > .ui-layout-unit-content {
+  overflow: hidden;
+}
+body > .ui-layout-unit.ui-layout-pane-north > .ui-layout-unit-content h1 {
+  margin-left: 18px;
+}
+body > .ui-layout-unit.ui-layout-pane-north > .ui-layout-unit-content .ajax-status {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
