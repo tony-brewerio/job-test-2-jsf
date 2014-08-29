@@ -140,6 +140,15 @@
                                          style="margin: 0 12px;">
                             <p:resetInput target="formPanelGrid"/>
                         </p:commandButton>
+
+                        <p:outputPanel rendered="#{phoneBookItemForm.id != null}">
+                            <p:separator/>
+                            <p:commandButton value="Delete" actionListener="#{phoneBookItemForm.delete}" process="@this"
+                                             update="formForm, :formTable:dataTable"
+                                             style="margin: 0 12px;">
+                                <p:resetInput target="formPanelGrid"/>
+                            </p:commandButton>
+                        </p:outputPanel>
                     </p:outputPanel>
 
                     <p:separator/>

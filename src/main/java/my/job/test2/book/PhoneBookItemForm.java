@@ -76,6 +76,14 @@ public class PhoneBookItemForm {
     }
 
     /**
+     * Removes current record from database, then resets the form
+     */
+    public void delete() {
+        phoneBookItemDAO.delete(id);
+        reset();
+    }
+
+    /**
      * Main form action.
      * If id property was set previously by selecting table row, will perform update on record with that id.
      * Otherwise, new record is inserted, form state is reset afterwards.

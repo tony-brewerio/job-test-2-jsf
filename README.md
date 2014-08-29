@@ -16,6 +16,8 @@ In this case, form will update this record, and won't reset after saving.
 When form is in bound state, a new button to handle photo upload will appear.
 Clicking on this button will open modal dialog that displays current photo and allows to upload new one.
 
+Selected records can also be deleted with button that appears below Save/Reset ones.
+
 In the middle of the screen there's data table that displays phone book records.
 Search, sorting and pagination is efficiently handled thanks to PrimeFaces `LazyDataModel`.
 

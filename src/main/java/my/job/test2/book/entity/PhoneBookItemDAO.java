@@ -91,6 +91,16 @@ public class PhoneBookItemDAO {
     }
 
     /**
+     * Delete phone book record with this id from database
+     * @param id
+     */
+    @Transactional
+    public void delete(Integer id) {
+        PhoneBookItem item = find(id);
+        sessionFactory.getCurrentSession().delete(item);
+    }
+
+    /**
      * Returns record from database by id
      * @param id
      * @return
