@@ -1,7 +1,8 @@
 Sample PrimeFaces / MySQL Phone Book
 =========
 
-Should be running live here, until I shut it down - http://jsf.82.196.1.152.xip.io/ 
+Should be running live here, until I shut it down - http://jsf.82.196.1.152.xip.io/
+It may be somewhat slow, since it runs on cheapest DigitalOcean vps that is low on CPU resources.
 
 This is a simple PrimeFaces web application I've done for job interview.
 
