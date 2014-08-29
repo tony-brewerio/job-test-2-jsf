@@ -54,10 +54,11 @@
                         <h:outputText value="#{item.name}"/>
                     </p:column>
                     <p:column headerText="Photo" style="text-align: center; padding-top: 10px;">
-                        <p:graphicImage value="#{phoneBookItemPhoto.photo}" cache="false"
+                        <p:graphicImage value="#{phoneBookItemPhoto.photo}"
                                         rendered="#{item.photo != null}"
                                         style="max-width: 100%; max-height: 60px;">
                             <f:param name="id" value="#{item.id}"/>
+                            <f:param name="at" value="#{item.photoUploadedAt}"/>
                         </p:graphicImage>
                     </p:column>
                     <p:column headerText="Birth Date"
@@ -179,10 +180,11 @@
                 <p:row>
                     <p:column style="width: 220px;">
                         <p:outputPanel id="currentPhoto">
-                            <p:graphicImage value="#{phoneBookItemPhoto.photo}" cache="false"
+                            <p:graphicImage value="#{phoneBookItemPhoto.photo}"
                                             style="max-width: 100%; max-height: 100%;"
-                                            rendered="#{phoneBookItemForm.hasPhoto}">
+                                            rendered="#{phoneBookItemForm.photoAt != null}">
                                 <f:param name="id" value="#{phoneBookItemForm.id}"/>
+                                <f:param name="at" value="#{phoneBookItemForm.photoAt}"/>
                             </p:graphicImage>
                         </p:outputPanel>
                     </p:column>

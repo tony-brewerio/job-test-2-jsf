@@ -3,6 +3,7 @@ package my.job.test2.book;
 
 import com.github.javafaker.Faker;
 import lombok.Setter;
+import my.job.test2.book.entity.PhoneBookItem;
 import my.job.test2.book.entity.PhoneBookItemDAO;
 import org.apache.commons.lang.math.RandomUtils;
 
@@ -10,9 +11,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Random;
+import java.util.*;
 
 @ManagedBean(eager = true)
 @ApplicationScoped
@@ -26,14 +25,16 @@ public class BookItemDataGenerator {
     public void generate() {
         Faker faker = new Faker();
 
+        List<PhoneBookItem> items = new ArrayList<>();
         for (int i = 0; i <= 1000; i++) {
-            phoneBookItemDAO.insert(
-                    faker.name().fullName(),
-                    birthDate(),
-                    faker.address().country() + " " + faker.address().cityPrefix() + faker.address().citySuffix() + " " + faker.address().streetAddress(false),
-                    faker.phoneNumber().phoneNumber()
-            );
+            PhoneBookItem item = new PhoneBookItem();
+            item.setName(faker.name().fullName());
+            item.setBirthDate(birthDate());
+            item.setAddress(faker.address().country() + " " + faker.address().cityPrefix() + faker.address().citySuffix() + " " + faker.address().streetAddress(false));
+            item.setPhone(faker.phoneNumber().phoneNumber());
+            items.add(item);
         }
+        phoneBookItemDAO.insertAll(items);
     }
 
     Date birthDate() {

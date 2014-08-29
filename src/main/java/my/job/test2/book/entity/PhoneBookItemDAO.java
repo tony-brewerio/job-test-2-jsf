@@ -3,6 +3,7 @@ package my.job.test2.book.entity;
 import lombok.Data;
 import org.apache.commons.io.IOUtils;
 import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
@@ -41,6 +42,18 @@ public class PhoneBookItemDAO {
 
     public PhoneBookItemDAO() {
         logger = LoggerFactory.getLogger(getClass());
+    }
+
+    /**
+     * Adds list of new records to database
+     * @param items
+     */
+    @Transactional
+    public void insertAll(List<PhoneBookItem> items) {
+        Session session = sessionFactory.getCurrentSession();
+        for (PhoneBookItem item: items) {
+            session.persist(item);
+        }
     }
 
     /**
@@ -87,6 +100,7 @@ public class PhoneBookItemDAO {
     @Transactional
     public void updatePhoto(Integer id, byte[] photo) throws SQLException {
         PhoneBookItem item = find(id);
+        item.setPhotoUploadedAt(new Date());
         item.setPhoto(new SerialBlob(photo));
     }
 

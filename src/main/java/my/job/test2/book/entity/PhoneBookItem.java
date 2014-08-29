@@ -34,4 +34,7 @@ public class PhoneBookItem implements Serializable {
     @Column(name = "PHOTO")
     Blob photo;
 
+    @Column(name = "PHOTO_UPLOADED_AT")
+    Date photoUploadedAt;
+
 }

@@ -43,7 +43,7 @@ public class PhoneBookItemForm {
 
     String phone;
 
-    boolean hasPhoto;
+    Date photoAt;
 
     @PostConstruct
     void init() {
@@ -72,7 +72,7 @@ public class PhoneBookItemForm {
         birthDate = null;
         address = null;
         phone = null;
-        hasPhoto = false;
+        photoAt = null;
     }
 
     /**
@@ -115,7 +115,7 @@ public class PhoneBookItemForm {
         birthDate = item.getBirthDate();
         address = item.getAddress();
         phone = item.getPhone();
-        hasPhoto = item.getPhoto() != null;
+        photoAt = item.getPhotoUploadedAt();
     }
 
     /**
@@ -133,7 +133,7 @@ public class PhoneBookItemForm {
             ByteArrayOutputStream thumbStream = new ByteArrayOutputStream();
             Thumbnails.of(stream).size(240, 240).outputQuality(0.95).toOutputStream(thumbStream);
             phoneBookItemDAO.updatePhoto(id, thumbStream.toByteArray());
-            hasPhoto = true;
+            photoAt = phoneBookItemDAO.find(id).getPhotoUploadedAt();
         }
     }
 
